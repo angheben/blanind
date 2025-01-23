@@ -1423,7 +1423,6 @@ textarea {
 
 /* Product Section Styles */
 
-
 #products {
   background-color: #FF8C00; /* Set background color to orange */
 }
@@ -1439,6 +1438,8 @@ textarea {
   border-radius: 5px;
   margin-bottom: 30px;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Soft border */
 }
 
 .product-carousel .product-item img {
@@ -1449,11 +1450,23 @@ textarea {
 
 .center-image {
   display: block;
-  margin: 0 auto; /* Center the image horizontally */
+  margin: 0 auto; /* Center the image horizontally*/
+
+@keyframes fadeInUpMenu {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.product-item {
-  padding: 15px 10px; /* Reduce padding */
-  border-radius: 5px;
-  margin-bottom: 20px;
+.fadeInUpMenu {
+  animation-name: fadeInUpMenu;
+  animation-duration: 1s;
+  animation-fill-mode: both;
 }
+

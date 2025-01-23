@@ -17,7 +17,7 @@
         }
     });
 
-    // one page navigation 
+    // one page navigation
     $('.navbar-nav').onePageNav({
       currentClass: 'active'
     });
@@ -44,9 +44,9 @@
         mobile: false
     });
 
-    wow.init();    
+    wow.init();
 
-     /* Testimonials Carousel 
+     /* Testimonials Carousel
     ========================================================*/
     var owl = $("#testimonials");
       owl.owlCarousel({
@@ -77,8 +77,8 @@
                 items: 3
             }
         }
-      });  
-      
+      });
+
 
     /* Back Top Link active
     ========================================================*/
