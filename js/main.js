@@ -1,11 +1,9 @@
 (function($) {
-  
-  "use strict";  
+  "use strict";
 
   $(window).on('load', function() {
 
-  /*Page Loader active
-  ========================================================*/
+  /* Page Loader active ======================================================== */
   $('#preloader').fadeOut();
 
   // Sticky Nav
@@ -22,32 +20,28 @@
       currentClass: 'active'
     });
 
-    /* Auto Close Responsive Navbar on Click
-    ========================================================*/
+    /* Auto Close Responsive Navbar on Click ======================================================== */
     function close_toggle() {
         if ($(window).width() <= 768) {
             $('.navbar-collapse a').on('click', function () {
                 $('.navbar-collapse').collapse('hide');
             });
-        }
-        else {
+        } else {
             $('.navbar .navbar-inverse a').off('click');
         }
     }
     close_toggle();
     $(window).resize(close_toggle);
 
-    /* WOW Scroll Spy
-    ========================================================*/
+    /* WOW Scroll Spy ======================================================== */
      var wow = new WOW({
-      //disabled for mobile
+      // disabled for mobile
         mobile: false
     });
 
     wow.init();
 
-     /* Testimonials Carousel
-    ========================================================*/
+     /* Testimonials Carousel ======================================================== */
     var owl = $("#testimonials");
       owl.owlCarousel({
         loop: true,
@@ -60,65 +54,71 @@
         autoPlay: true,
         responsiveClass: true,
         responsiveRefreshRate: true,
-        responsive : {
-            0 : {
-                items: 1
-            },
-            768 : {
-                items: 2
-            },
-            960 : {
-                items: 3
-            },
-            1200 : {
-                items: 3
-            },
-            1920 : {
-                items: 3
-            }
+        responsive: {
+            0 : { items: 1 },
+            768 : { items: 2 },
+            960 : { items: 3 },
+            1200 : { items: 3 },
+            1920 : { items: 3 }
         }
       });
 
-
-    /* Back Top Link active
-    ========================================================*/
+    /* WhatsApp Button and Back Top Link active ======================================================== */
+    $(document).ready(function() {
       var offset = 200;
       var duration = 500;
+
       $(window).scroll(function() {
         if ($(this).scrollTop() > offset) {
           $('.back-to-top').fadeIn(400);
+          $('.whatsapp-button').fadeIn(400);
         } else {
           $('.back-to-top').fadeOut(400);
+          $('.whatsapp-button').fadeOut(400);
         }
       });
 
-      $('.back-to-top').on('click',function(event) {
+      $('.back-to-top').on('click', function(event) {
         event.preventDefault();
         $('html, body').animate({
           scrollTop: 0
         }, 600);
         return false;
       });
+    });
+
+    /* Back Top Link active ======================================================== */
+    var offset = 200;
+    var duration = 500;
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > offset) {
+        $('.back-to-top').fadeIn(400);
+      } else {
+        $('.back-to-top').fadeOut(400);
+      }
+    });
+
+    $('.back-to-top').on('click', function(event) {
+      event.preventDefault();
+      $('html, body').animate({
+        scrollTop: 0
+      }, 600);
+      return false;
+    });
 
   });
 
   $(document).ready(function(){
-  $('.product-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    responsive:{
-      0:{
-        items:1
-      },
-      600:{
-        items:2
-      },
-      1000:{
-        items:3
+    $('.product-carousel').owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      responsive: {
+        0: { items: 1 },
+        600: { items: 2 },
+        1000: { items: 3 }
       }
-    }
+    });
   });
-});
 
 }(jQuery));
