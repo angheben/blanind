@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Favicon link -->
-    <link rel="icon" href="img/B.jpg">
+    <link rel="icon" href="img/B1.ico">
 
     <style>
       /* WhatsApp button */
@@ -73,16 +73,14 @@
       <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
         <div class="container">
           <!-- Brand and toggle get grouped for better mobile display -->
-          <a href="index.html" class="navbar-brand"><img src="img/logo2.png" alt="" class="navbar-logo"></a>
+          <a href="main.html" class="navbar-brand"><img src="img/logo2.png" alt="" class="navbar-logo"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <i class="lni-menu"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
               <li class="nav-item active">
-                <a class="nav-link" href="#hero-area">
-                  Menu
-                </a>
+                <a class="nav-link" href="main.html#hero-area">Menu</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#services">
@@ -102,8 +100,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#testimonial">
-                  Testemunhos
+                <a class="nav-link" href="projects.html">Projetos</a>
                 </a>
               </li>
               <li class="nav-item">
@@ -259,32 +256,58 @@
     <!-- Quality Section End -->
 
     <!-- Company Section start -->
-    <div class="company-area section-padding bg-gray">
+    <div class="company-area section-padding bg-gray" style="background-image: url('img/company.jpeg'); background-size: cover; background-position: center; position: relative; height: 600px;">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-12 col-xs-12 info">
             <div class="about-wrapper wow fadeInLeft" data-wow-delay="0.3s">
               <div>
                 <div class="site-heading">
-                  <h2 class="section-title">Empresa</h2>
+                  <h2 class="section-title" style="color:black">Empresa</h2>
                 </div>
                 <div class="content">
                   <p>
                     Nascida nos anos 2000 a BLAN possui uma vasta experiência no mercado de luminárias e equipamentos para
-                    supermercados, contamos com equipamentos de ponta para realizar cada etapa da produção de forma certeira,
+                    supermercados, contamos com equipamentos de ponta para realizar cada etapa da produção com a qualidade que o seu estabelecimento merece
                   </p>
                   <a href="#" class="btn btn-common mt-3">Read More</a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-12 col-xs-12 wow fadeInRight" data-wow-delay="0.3s">
-            <img class="img-fluid" src="img/gondola1.png" alt="" >
-          </div>
         </div>
       </div>
     </div>
+    <style>
+      .company-area {
+      background-image: url('img/company.jpeg'); /* Replace with your company image path */
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      height: 1000px; /* Adjust the height to fit the entire image */
+      color: white; /* Ensure text is readable on the background image */
+    }
+
+    .company-area .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .company-area::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity as needed */
+      z-index: 0;
+    }
+
+    </style>
     <!-- Company Section End -->
+
+
 
 
     <!-- Product Sections -->
