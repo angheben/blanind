@@ -1165,6 +1165,37 @@ hr {
   background: #F63854;
 }
 
+/* Ajuste das setas do carrossel */
+.owl-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+/* Setas maiores, com fundo laranja e bordas arredondadas */
+.owl-prev, .owl-next {
+  background: #FF8000; /* 🔹 Cor laranja */
+  color: white; /* 🔹 Seta branca */
+  font-size: 32px; /* 🔹 Aumentei o tamanho da seta */
+  width: 50px; /* 🔹 Aumentei o tamanho do botão */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* 🔹 Deixa o fundo arredondado */
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out; /* 🔹 Suaviza animações */
+}
+
+/* Efeito hover para melhorar a interação */
+.owl-prev:hover, .owl-next:hover {
+  background: #CC6600; /* 🔹 Um laranja um pouco mais escuro no hover */
+  transform: scale(1.1); /* 🔹 A seta cresce levemente ao passar o mouse */
+}
+
 .slick-slider {
   padding: 80px 0;
 }
