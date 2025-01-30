@@ -61,6 +61,26 @@
         display: inline-block;
         font-size: 22px;
       }
+
+      /* Style for the Product Section button */
+      .btn-primary {
+        background-color: white; /* Orange background */
+        color: black; /* White text */
+        padding: 10px 20px; /* Padding for better spacing */
+        font-size: 18px; /* Font size */
+        font-family: inherit;
+        text-transform: uppercase;
+        border-radius: 25px; /* Rounded corners */
+        border-color: lightgrey;
+        text-decoration: none; /* Remove underline */
+        transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Smooth transitions */
+      }
+
+      /* Hover effect for the button */
+      .btn-primary:hover {
+        background-color: #CC6600; /* Darker orange on hover */
+        transform: scale(1.05); /* Slightly enlarge the button */
+      }
     </style>
 
 
@@ -317,12 +337,14 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="product-carousel owl-carousel">
+
               <div class="single-item wow fadeInUpMenu" data-wow-duration="1s" data-wow-delay="0.2s">
                 <div class="product-item">
                   <img src="img/products/gondola_preta.png" alt="Produto 1" class="center-image">
                   <h3>Gôndola Lateral Preta</h3>
                 </div>
               </div>
+
               <div class="single-item wow fadeInUpMenu" data-wow-duration="1s" data-wow-delay="0.2s">
                 <div class="product-item">
                   <img src="img/products/gondola_branca.png" alt="Produto 2" class="center-image">
@@ -520,11 +542,13 @@
               </div>
 
             </div>
+              <div class="text-center" style="margin-top: 30px;">
+                <a href="products.html" class="btn btn-primary product-button"><h4>Ver Todos os Produtos</h4></a>
+              </div>
           </div>
         </div>
       </div>
     </section>
-
     <!-- Product Section End -->
 
     <!-- Features Section Start -->
@@ -880,7 +904,6 @@
     Testimonial Section End -->
 
     <!-- Contact Section Start -->
-
     <section id="contact" class="section-padding bg-gray">
       <div class="container">
         <div class="section-header text-center">
@@ -934,10 +957,6 @@
       </div>
     </section>
     <!-- Contact Section End -->
-
-    <!-- Contact Section End -->
-
-
 
     <!-- Footer Section Start -->
     <footer id="footer" class="footer-area section-padding">

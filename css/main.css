@@ -1178,8 +1178,8 @@ hr {
 /* Setas maiores, com fundo laranja e bordas arredondadas */
 .owl-prev, .owl-next {
   background: #FF8000; /* 🔹 Cor laranja */
-  color: white; /* 🔹 Seta branca */
-  font-size: 32px; /* 🔹 Aumentei o tamanho da seta */
+  color: #FF8000; /* 🔹 Seta branca */
+  font-size: 50px; /* 🔹 Aumentei o tamanho da seta */
   width: 50px; /* 🔹 Aumentei o tamanho do botão */
   height: 50px;
   display: flex;
@@ -1193,7 +1193,7 @@ hr {
 /* Efeito hover para melhorar a interação */
 .owl-prev:hover, .owl-next:hover {
   background: #CC6600; /* 🔹 Um laranja um pouco mais escuro no hover */
-  transform: scale(1.1); /* 🔹 A seta cresce levemente ao passar o mouse */
+  transform: scale(2.0); /* 🔹 A seta cresce levemente ao passar o mouse */
 }
 
 .slick-slider {
