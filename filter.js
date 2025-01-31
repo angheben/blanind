@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
 // Example: Dynamically update options
 document.addEventListener('DOMContentLoaded', function () {
   const productItems = document.querySelectorAll('.product-item');
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
   });
 });
+
 
 // Center product on hover
 document.addEventListener('DOMContentLoaded', function () {
@@ -70,21 +72,34 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+// Adjust options overlay based on product position
 document.addEventListener('DOMContentLoaded', function () {
   const products = document.querySelectorAll('.single-product');
 
   products.forEach(product => {
     const optionsOverlay = product.querySelector('.options-overlay');
-    const rect = product.getBoundingClientRect();
-    const windowWidth = window.innerWidth;
 
-    // Check if the product is on the right side of the screen
-    if (rect.right > windowWidth / 2) {
-      optionsOverlay.classList.add('options-overlay-left'); // Show on the left
-      optionsOverlay.classList.remove('options-overlay-right');
-    } else {
-      optionsOverlay.classList.add('options-overlay-right'); // Show on the right
-      optionsOverlay.classList.remove('options-overlay-left');
-    }
+    product.addEventListener('mouseenter', function () {
+      const rect = product.getBoundingClientRect();
+      const windowWidth = window.innerWidth;
+
+      // Check if the product is on the right side of the screen
+      if (rect.right + optionsOverlay.offsetWidth > windowWidth) {
+        optionsOverlay.classList.add('options-overlay-left'); // Show on the left
+        optionsOverlay.classList.remove('options-overlay-right');
+      } else {
+        optionsOverlay.classList.add('options-overlay-right'); // Show on the right
+        optionsOverlay.classList.remove('options-overlay-left');
+      }
+
+      // Show the options overlay
+      optionsOverlay.style.display = 'block';
+    });
+
+    product.addEventListener('mouseleave', function () {
+      // Hide the options overlay when not hovering
+      optionsOverlay.style.display = 'none';
+    });
   });
 });

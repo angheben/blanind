@@ -114,36 +114,6 @@
         opacity: 0.7; /* Reduce opacity */
       }
 
-      /* Options Overlay */
-      .options-overlay {
-          display: none;  /* Hide by default */
-          position: absolute;
-          left: 105%;  /* Move it to the right side of the product */
-          top: 50%;
-          transform: translateY(-50%); /* Center it vertically */
-          background: white;
-          padding: 20px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          transition: opacity 0.3s ease-in-out;
-          z-index: 10;
-          width: 200px; /* Adjust width as needed */
-      }
-
-      /* Ensure the parent container has a position to allow absolute positioning */
-      .single-product {
-          position: relative;
-          display: inline-block;
-      }
-
-      /* Show the options only when hovering */
-      .single-product:hover .options-overlay {
-          display: block;
-      }
-
-
-      .product-grid .single-product:hover .options-overlay {
-        right: 0; /* Slide in from the right */
-      }
 
       /* Colors */
       .color-options {
@@ -157,42 +127,6 @@
         border-radius: 50%;
         margin-right: 10px;
         border: 1px solid #ccc;
-      }
-
-      /* Options Overlay */
-      .options-overlay {
-        display: none; /* Hide by default */
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%); /* Center it vertically */
-        background: white;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: opacity 0.3s ease-in-out;
-        z-index: 10;
-        width: auto; /* Adjust width to fit content */
-        min-width: 300px; /* Minimum width to ensure it doesn't get too small */
-      }
-
-      /* Overlay on the right side */
-      .options-overlay-right {
-        left: 105%; /* Position to the right of the product */
-      }
-
-      /* Overlay on the left side */
-      .options-overlay-left {
-        right: 105%; /* Position to the left of the product */
-      }
-
-      /* Ensure the parent container has a position to allow absolute positioning */
-      .single-product {
-        position: relative;
-        display: inline-block;
-      }
-
-      /* Show the options only when hovering */
-      .single-product:hover .options-overlay {
-        display: block;
       }
 
       /* Sizes */
@@ -220,6 +154,47 @@
       .description-box p {
         margin: 0;
         font-size: 14px;
+      }
+
+      /* Options Overlay */
+      .options-overlay {
+          display: none;  /* Hide by default */
+          position: absolute;
+          left: 105%;  /* Move it to the right side of the product */
+          top: 50%;
+          transform: translateY(-50%); /* Center it vertically */
+          background: white;
+          padding: 20px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          transition: opacity 0.3s ease-in-out;
+          z-index: 10;
+          width: 300px; /* Adjust width as needed */
+      }
+
+      /* Adjust for products near the right edge */
+      .options-overlay-left {
+        right: 105%; /* Position to the left of the product with margin */
+      }
+
+      /* Adjust for products not near the right edge */
+      .options-overlay-right {
+        left: calc(100% + 20px);  /* Position to the right of the product with margin */
+        right: auto;
+      }
+
+      /* Ensure the parent container has a position to allow absolute positioning */
+      .single-product {
+          position: relative;
+          display: inline-block;
+      }
+
+      /* Show the options only when hovering */
+      .single-product:hover .options-overlay {
+          display: block;
+      }
+
+      .product-grid .single-product:hover .options-overlay {
+        right: 0; /* Slide in from the right */
       }
     </style>
 
@@ -386,7 +361,7 @@
               </div>
               <h3>Autosserviço</h3>
               <!-- Options Overlay -->
-              <div class="options-overlay">
+              <div class="options-overlay-left">
                 <div class="options-content">
                   <!-- Colors -->
                   <div class="color-options">
@@ -414,6 +389,602 @@
           </div>
 
           <!-- Example Product 4 (Gondola) -->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/ac.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Açougue</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 5 (Gondola) -->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/asc.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Autosserviço Congelado</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 6-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/asc.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Autosserviço Congelado</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay-left">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 7-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/caixamaster.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Caixa Rápido Master</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 8-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/caixapremium.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Caixa Rápido Premium</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 9-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/caixarapido.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Caixa Rápido Standard</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay-left">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 10-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/cesto.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Cesto</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 11-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/check_stand.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Check Stand</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 12-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/checkoutmaster.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Checkout Master</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 13-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/checkoutpremium.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Checkout Premium</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 14-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/checkoutstand.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Checkout Standard</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 15-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/checkstand.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Checkstand</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 16-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/estrado.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Estrado</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 17-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/gancheira.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Gancheira</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 18-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/gancheira1.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Gancheira Unitária</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 19-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/gce.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Gancheira Unitária</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example Product 20-->
+          <div class="col-lg-4 col-md-6 col-sm-12 product-item" data-category="autosserviço">
+            <div class="single-product">
+              <div class="image-container">
+                <img src="img/products/gce.png" alt="Gôndola Preta" class="img-fluid">
+              </div>
+              <h3>Gancheira Unitária</h3>
+              <!-- Options Overlay -->
+              <div class="options-overlay">
+                <div class="options-content">
+                  <!-- Colors -->
+                  <div class="color-options">
+                    <h4>Cores</h4>
+                    <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #000000; border: 1px solid #ccc;"></div>
+                    <div class="color-circle" style="background-color: #2F4F4F; border: 1px solid #ccc;"></div>
+                  </div>
+                  <!-- Sizes -->
+                  <div class="size-options">
+                    <h4>Tamanhos</h4>
+                    <div class="size-box">1.00</div>
+                    <div class="size-box">1.20</div>
+                    <div class="size-box">1.50</div>
+                  </div>
+                  <!-- Description -->
+                  <div class="description-box">
+                    <h4>Descrição</h4>
+                    <p>A Gôndola Batrack é ideal para expor produtos mais pesados ou que necessitam de mais espaço
+                    que uma gôndola normal</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
         </div>
       </div>
   </body>
