@@ -133,7 +133,7 @@
             <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
               <div class="contents">
                 <h2 class="head-title" style="color: white">Bem-vindo à BLAN Soluções Comerciais</h2>
-                <p style="color: lightgrey">Nossos produtos de alta qualidade para supermercados e estabelecimentos comerciais são a chave para o sucesso do seu negócio.</p>
+                <p style="color: lightgrey">Produtos de alta qualidade para supermercados e estabelecimentos comerciais são a chave para o sucesso do seu negócio.</p>
                 <div class="header-button">
                   <!-- <a href="#" class="btn btn-common">Saiba Mais</a> -->
                 </div>
@@ -342,8 +342,8 @@
     <!-- Quality Section End -->
 
     <!-- Company Section start -->
-    <div class="company-area section-padding bg-gray" style="background-image: url('img/company.jpeg'); background-size: cover; background-position: center; position: relative; height: 600px;">
-      <div class="container">
+    <div class="company-area">
+      <div class="container flex items-center justify-center min-h-screen">
         <div class="row">
           <div class="col-lg-6 col-md-12 col-xs-12 info">
             <div class="about-wrapper wow fadeInLeft" data-wow-delay="0.3s">
@@ -351,12 +351,10 @@
                 <div class="site-heading">
                   <h2 class="section-title" style="color:lightgrey">Empresa</h2>
                 </div>
-                <div class="content">
+                <div class="content mt-8"> <!-- Adicionamos uma margem superior para empurrar o conteúdo para baixo -->
                   <p>
-                    Nascida nos anos 2000 a BLAN possui uma vasta experiência no mercado de luminárias e equipamentos para
-                    supermercados, contamos com equipamentos de ponta para realizar cada etapa da produção com a qualidade que o seu estabelecimento merece
+                    Nascida nos anos 2000 a BLAN possui uma vasta experiência no mercado de luminárias e equipamentos para supermercados, contamos com equipamentos de ponta para realizar cada etapa da produção com a qualidade que o seu estabelecimento merece
                   </p>
-                  <a href="#" class="btn btn-common mt-3">Read More</a>
                 </div>
               </div>
             </div>
@@ -364,33 +362,38 @@
         </div>
       </div>
     </div>
+
     <style>
       .company-area {
-      background-image: url('img/company.jpeg'); /* Replace with your company image path */
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      height: 1000px; /* Adjust the height to fit the entire image */
-      color: white; /* Ensure text is readable on the background image */
-    }
+        background-image: url('img/company.jpeg'); /* Substitua pelo caminho da imagem da empresa */
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        height: 1000px; /* Ajuste a altura para caber a imagem inteira */
+        color: white; /* Garanta que o texto seja legível na imagem de fundo */
+      }
 
-    .company-area .container {
-      position: relative;
-      z-index: 1;
-    }
+      .company-area .container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh; /* Define a altura mínima da tela */
+      }
 
-    .company-area::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity as needed */
-      z-index: 0;
-    }
-
+      .company-area::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Ajuste a cor e opacidade da sobreposição conforme necessário */
+        z-index: 0;
+      }
     </style>
+
     <!-- Company Section End -->
 
     <!-- Product Sections -->
@@ -449,7 +452,7 @@
 
               <div class="single-item wow fadeInUpMenu" data-wow-duration="1s" data-wow-delay="0.2s">
                 <div class="product-item">
-                  <img src="img/products/ponta02.png" alt="Produto 3" class="center-image">
+                  <img src="img/products/ponta02.PNG" alt="Produto 3" class="center-image">
                   <h3>Ponta de Gôndola 3 Faces</h3>
                 </div>
               </div>
@@ -944,6 +947,8 @@
       </div>
     </section>
     <!-- Contact Section End -->
+
+  </body>
 
     <!-- Footer Section Start -->
     <footer id="footer" class="footer-area section-padding">
