@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>BLAN</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <!-- Icon -->
+    <link rel="stylesheet" href="fonts/line-icons.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+
+    <!-- Animate -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Favicon link -->
+    <link rel="icon" href="img/B1.ico">
+
+    <!-- CSS -->
+    <style>
+    /* WhatsApp button */
+    a.whatsapp-button {
+        display: inline-block;
+        position: fixed;
+        bottom: 70px;
+        right: 15px;
+        text-decoration: none;
+        background-color: #25d366;
+        color: white;
+        font-size: 22px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 30px;
+        text-align: center;
+        vertical-align: middle;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a.whatsapp-button:hover, a.whatsapp-button:focus {
+        background-color: #20b357;
+        text-decoration: none;
+    }
+
+    a.whatsapp-button i {
+        display: inline-block;
+        font-size: 22px;
+    }
+
+    /* Filter Buttons */
+    .btn-filter {
+        background-color: #FF8000;
+        color: white;
+        padding: 10px 20px;
+        margin: 5px;
+        margin-top: 70px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    .btn-filter.active {
+        background-color: #CC6600;
+    }
+
+    .btn-filter:hover {
+        background-color: #CC6600;
+        transform: scale(1.05);
+    }
+
+    /* Product */
+    .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .product {
+        width: 25%;
+        box-sizing: border-box;
+        position: relative;
+        text-align: center;
+        padding: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 10px;
+    }
+
+    .product img {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+        display: block;
+    }
+
+    .product h3 {
+        margin: 10px 0;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 300px;
+        height: 100%;
+        background: #f0f0f0; /* Cinza claro */
+        color: #333; /* Cor do texto ajustada para melhor contraste */
+        padding: 20px;
+        box-sizing: border-box;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 10px;
+    }
+
+    .product:hover .overlay {
+        opacity: 1;
+    }
+
+    .product-grid > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .options-content {
+        /* Adicione estilos adicionais para o conteúdo da janela aqui */
+    }
+
+    .color-options {
+        margin-bottom: 20px;
+    }
+
+    .color-circle {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        background-color: #ddd; /* Cinza um pouco mais escuro para os círculos */
+    }
+
+    .color-circle[style*="white"] {
+        background-color: white;
+    }
+
+    .color-circle[style*="black"] {
+        background-color: black;
+    }
+
+    .color-circle[style*="#45494E"] {
+        background-color: #45494E;
+    }
+
+    .size-options {
+        margin-bottom: 20px;
+    }
+
+    .size-box {
+        display: inline-block;
+        padding: 5px 10px;
+        margin-right: 10px;
+        background: #e0e0e0; /* Cinza claro para as caixas de tamanho */
+        border-radius: 5px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .size-box:not(:first-child) {
+        margin-top: 10px;
+    }
+
+    .description-box {
+        background: #e0e0e0; /* Cinza claro para a caixa de descrição */
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .description-box p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .product:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+    .blurred {
+        filter: blur(5px);
+        opacity: 0.7;
+    }
+
+    .highlighted {
+        z-index: 10;
+    }
+</style>
+    <!-- CSS ends -->
+
+  </head>
+  <body>
+
+    <!-- JS -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const products = document.querySelectorAll('.product');
+        const filterButtons = document.querySelectorAll('.btn-filter');
+
+        // Função para filtrar os produtos
+        function filterProducts(category) {
+            products.forEach(product => {
+                const productCategories = product.dataset.category.split(' '); // Separa as categorias do produto
+
+                if (category === 'all' || productCategories.includes(category)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Adicionar evento de clique aos botões de filtro
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remover a classe 'active' de todos os botões
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Adicionar a classe 'active' ao botão clicado
+                this.classList.add('active');
+                // Filtrar os produtos
+                const category = this.dataset.filter;
+                filterProducts(category);
+            });
+        });
+
+        // Mostrar todos os produtos inicialmente
+        filterProducts('all');
+
+        // Restante do seu código JavaScript
+        products.forEach(product => {
+            product.addEventListener('mouseenter', () => {
+                products.forEach(otherProduct => {
+                    if (otherProduct !== product) {
+                        otherProduct.classList.add('blurred');
+                    }
+                });
+                product.classList.add('highlighted');
+                product.querySelector('.overlay').style.opacity = '1';
+
+                // Detectar a posição do produto
+                const productRect = product.getBoundingClientRect();
+                const windowWidth = window.innerWidth;
+
+                // Ajustar o posicionamento da janela
+                const overlay = product.querySelector('.overlay');
+                if (productRect.right > windowWidth / 2) {
+                    overlay.style.left = '-300px'; // Ajuste conforme a largura da janela
+                } else {
+                    overlay.style.left = '100%';
+                }
+            });
+
+            product.addEventListener('mouseleave', () => {
+                products.forEach(otherProduct => {
+                    otherProduct.classList.remove('blurred');
+                });
+                product.classList.remove('highlighted');
+                product.querySelector('.overlay').style.opacity = '0';
+
+                // Resetar o posicionamento da janela
+                const overlay = product.querySelector('.overlay');
+                overlay.style.left = '100%';
+            });
+        });
+    });
+</script>
+    <!-- JS ends -->
+
+    <!-- Navbar Start -->
+    <header id="header-wrap">
+        <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a href="main.html" class="navbar-brand"><img src="img/logo2.png" alt="" class="navbar-logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="lni-menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                <li class="nav-item active">
+                  <a class="nav-link" href="main.html#hero-area">Menu</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#services">
+                    Empresa
+                  </a>
+                </li>
+                <!--
+                <li class="nav-item">
+                  <a class="nav-link" href="#team">
+                    Time
+                  </a>
+                </li>
+                -->
+                <li class="nav-item">
+                  <a class="nav-link" href="#products">
+                    Produtos
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="projects.html">Projetos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contact">
+                    Contato
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+    <!-- Navbar Ends -->
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons text-center" style="margin-top: 30px; margin-bottom: 30px;">
+          <button class="btn btn-filter active" data-filter="all">Todos</button>
+          <button class="btn btn-filter" data-filter="gondolas">Gôndolas</button>
+          <button class="btn btn-filter" data-filter="balcões">Balcões</button>
+          <button class="btn btn-filter" data-filter="checkout">Checkout</button>
+          <button class="btn btn-filter" data-filter="MDF">MDF</button>
+          <button class="btn btn-filter" data-filter="refrigerados">Refrigerados</button>
+          <button class="btn btn-filter" data-filter="acessórios">Acessórios</button>
+        </div>
+    <!-- Filter Buttons Ends -->
+
+    <!-- Products -->
+    <div class="product-grid">
+
+      <!-- Gôndola Preta -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/gondola_preta.png" alt="Gôndola Preta">
+        <h3>Gôndola Lateral</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">1,40</div>
+              <div class="size-box">1,60</div>
+              <div class="size-box">1,80</div>
+              <div class="size-box">2,00</div>
+              <div class="size-box">2,10</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Maximize a exposição dos seus produtos com a nossa gôndola lateral. Projetada para otimizar o espaço e
+                aumentar a visibilidade dos itens, ela é perfeita para supermercados, farmácias e lojas que buscam
+                organização e praticidade. Prateleiras ajustáveis e design moderno que se adapta a qualquer ambiente.
+                Você pode personalizar os portas etiquetas na cor de sua preferência.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 01 -->
+
+      <!-- Gôndola Branca -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/gondola_branca.PNG" alt="Gôndola Preta">
+        <h3>Gôndola Lateral</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">1,40</div>
+              <div class="size-box">1,60</div>
+              <div class="size-box">1,80</div>
+              <div class="size-box">2,00</div>
+              <div class="size-box">2,10</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Opção de gôndola na cor branca, maximize a exposição dos seus produtos com a nossa gôndola lateral.
+                Projetada para otimizar o espaço e aumentar a visibilidade dos itens, ela é perfeita para supermercados,
+                farmácias e lojas que buscam organização e praticidade. Prateleiras ajustáveis e design moderno que se
+                adapta a qualquer ambiente. Você pode personalizar os portas etiquetas na cor de sua preferência.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 02 -->
+
+      <!-- Batrack -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/batrack.png" alt="Gôndola Preta">
+        <h3>Batrack</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">1,40</div>
+              <div class="size-box">1,60</div>
+              <div class="size-box">1,80</div>
+              <div class="size-box">2,00</div>
+              <div class="size-box">2,10</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O Batrack é a solução ideal para quem precisa de mais espaço e resistência. Com prateleiras robustas e
+                design inteligente, ele suporta cargas elevadas, perfeito para armazenar produtos pesados e volumosos.
+                Organize seu estoque com eficiência e aproveite ao máximo o espaço disponível.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 03 -->
+
+      <!-- Gôndola com Iluminação -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/gil.png" alt="Gôndola Preta">
+        <h3>Gôndola com LED</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">1,40</div>
+              <div class="size-box">1,60</div>
+              <div class="size-box">1,80</div>
+              <div class="size-box">2,00</div>
+              <div class="size-box">2,10</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O Batrack é a solução ideal para quem precisa de mais espaço e resistência. Com prateleiras robustas e
+                design inteligente, ele suporta cargas elevadas, perfeito para armazenar produtos pesados e volumosos.
+                Organize seu estoque com eficiência e aproveite ao máximo o espaço disponível.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 04 -->
+
+      <!-- Gôndola Canto Interno -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/gondolacantointerno.png" alt="Gôndola Preta">
+        <h3>Modulação para Canto Interno</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Sob medida</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>A modulação de canto interno otimiza espaços que seriam desperdiçados em cantos de paredes. Conta com
+                um módulo especial para o canto interno seguido de gôndolas laterais para preencher o espaço
+                Com design inteligente, ela permite a exposição de produtos em áreas de difícil aproveitamento, criando um fluxo
+                contínuo e convidativo para os clientes. Ideal para lojas de todos os tamanhos, a modulação de canto
+                interno garante que cada centímetro do seu espaço seja utilizado da melhor forma possível.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 05 -->
+
+      <!-- Gôndola Canto Externo -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/gce.png" alt="Gôndola Preta">
+        <h3>Modulação para Canto Externo</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Sob medida</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>A modulação de canto externo transforma cantos de corredores em pontos de destaque para seus produtos.
+                Com um design que chama a atenção, ela convida os clientes a explorarem novas áreas da loja, aumentando
+                as chances de compra por impulso. Perfeita para destacar promoções ou lançamentos, a modulação de canto
+                externo é uma estratégia eficaz para atrair olhares e impulsionar suas vendas. Conta com 3 módulos,
+                sendo 1 sob medida no canto e 2 laterais para destacar os produtos da melhor forma possível.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 06 -->
+
+      <!-- Gôndola com Gancheira -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/gancheira.png" alt="Gôndola Preta">
+        <h3>Gôndola com Gancheira</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">1,40</div>
+              <div class="size-box">1,60</div>
+              <div class="size-box">1,80</div>
+              <div class="size-box">2,00</div>
+              <div class="size-box">2,10</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>A gôndola com gancheira é a solução perfeita para quem busca versatilidade e organização. Conta
+                ganchos ajustáveis que permite expor uma grande variedade de produtos, desde itens
+                embalados até acessórios pendurados. Ideal para lojas de diversos segmentos, a gôndola com gancheira
+                otimiza o espaço e facilita a visualização dos produtos, aumentando as chances de venda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 07 -->
+
+      <!-- Gôndola com Gancheira + LED -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/c6.png" alt="Gôndola Preta">
+        <h3>Gôndola LED com Gancheira</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">1,40</div>
+              <div class="size-box">1,60</div>
+              <div class="size-box">1,80</div>
+              <div class="size-box">2,00</div>
+              <div class="size-box">2,10</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>A gôndola com gancheira e LED eleva a exposição dos seus produtos a um novo patamar. Combinando a
+                versatilidade da gancheira com a iluminação estratégica do LED, essa solução destaca seus produtos,
+                atraindo a atenção dos clientes e impulsionando suas vendas. Ideal para lojas que buscam um visual
+                moderno e atrativo, a gôndola com gancheira e LED é perfeita para evidenciar lançamentos, promoções ou
+                produtos de destaque.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 08 -->
+
+      <!-- Conjunto de Gôndola Ponta + Lateral -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/ponta05.PNG" alt="Gôndola Preta">
+        <h3>Modulação Gôndola Ponta e Lateral</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">1,40</div>
+              <div class="size-box">1,60</div>
+              <div class="size-box">1,80</div>
+              <div class="size-box">2,00</div>
+              <div class="size-box">2,10</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Esse conjunto mostra uma forma de posicionamento de gôndolas laterais para um corredor e uma gôndola
+                ponta. Na BLAN montamos o projeto de acordo com a sua necessidade, o posicionamento das gôndolas e suas
+                medidas buscam deixar o ambiente uniforme e funcional.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 09 -->
+
+      <!-- Conjunto de Gôndola Ponta + Lateral Estendida -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/gondola_completa.png" alt="Gôndola Preta">
+        <h3>Modulação Gôndola Ponta e Lateral Estendida</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">1,40</div>
+              <div class="size-box">1,60</div>
+              <div class="size-box">1,80</div>
+              <div class="size-box">2,00</div>
+              <div class="size-box">2,10</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Esse conjunto mostra uma forma de posicionamento de gôndolas laterais para um corredor e uma gôndola
+                ponta. Na BLAN montamos o projeto de acordo com a sua necessidade, o posicionamento das gôndolas e suas
+                medidas buscam deixar o ambiente uniforme e funcional.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 10 -->
+
+      <!-- Gôndola 3 Faces -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/ponta06.png" alt="Gôndola Preta">
+        <h3>Gôndola 3 Faces Preta</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">1,40</div>
+              <div class="size-box">1,60</div>
+              <div class="size-box">1,80</div>
+              <div class="size-box">2,00</div>
+              <div class="size-box">2,10</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Esse modelo é ideal para você que busca destacar produtos especiais nas pontas dos corredores do seu
+                supermercado, esse modelo conta um design robusto, iluminação LED e 5 níveis de exposição.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 11 -->
+
+      <!-- Gôndola 3 Faces -->
+      <div class="product" data-category="gondolas">
+        <img src="img/products/ponta02.PNG" alt="Gôndola Preta">
+        <h3>Gôndola 3 Faces Branca</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: white; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: black; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #45494E; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">1,40</div>
+              <div class="size-box">1,60</div>
+              <div class="size-box">1,80</div>
+              <div class="size-box">2,00</div>
+              <div class="size-box">2,10</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Esse modelo de ponta de gôndola com LED na cor brancaé ideal para você que busca destacar produtos
+                especiais nas pontas dos corredores do seu supermercado, esse modelo conta um design robusto, iluminação
+                LED e 5 níveis de exposição.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 12 -->
+
+      <!-- Expositor de Banana MDF -->
+      <div class="product" data-category="MDF">
+        <img src="img/products/b.png" alt="Gôndola Preta">
+        <h3>Expositor MDF para Bananas</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Altura: 2,20</div>
+              <div class="size-box">Comprimento: 1,10</div>
+              <div class="size-box">Largura: 0,70</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O expositor de bananas é a solução ideal para apresentar suas frutas de forma organizada e atraente.
+                Com design moderno e funcional, ele mantém as bananas frescas e visíveis, incentivando a compra por
+                impulso. Perfeito para supermercados, hortifrutis e mercearias, o expositor de bananas otimiza o espaço
+                e valoriza a qualidade dos seus produtos, garantindo um visual convidativo para seus clientes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 12+1 -->
+
+      <!-- Expositor de Temperos MDF -->
+      <div class="product" data-category="MDF">
+        <img src="img/products/b2.png" alt="Gôndola Preta">
+        <h3>Expositor MDF para Temperos</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Altura: 2,20</div>
+              <div class="size-box">Comprimento: 1,10</div>
+              <div class="size-box">Largura: 0,70</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O expositor de temperos em MDF é a solução perfeita para organizar e destacar seus condimentos. Com
+                design elegante e funcional, ele combina gancheiras e bandejas para expor uma variedade de temperos
+                em diferentes embalagens. Ideal para supermercados, mercearias e lojas de produtos naturais, o expositor
+                de temperos em MDF otimiza o espaço, facilita a visualização dos produtos e valoriza a qualidade dos
+                seus condimentos, atraindo a atenção dos clientes e impulsionando suas vendas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 14 -->
+
+      <!-- Expositor de Espetos MDF -->
+      <div class="product" data-category="MDF">
+        <img src="img/products/b3.png" alt="Gôndola Preta">
+        <h3>Expositor MDF para Espetos</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Altura: 2,20</div>
+              <div class="size-box">Comprimento: 1,10</div>
+              <div class="size-box">Largura: 0,70</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O expositor de espetos é a solução ideal para apresentar seus espetos de forma organizada e higiênica.
+                Com design prático e funcional, ele permite expor diferentes tipos de espetos, desde os tradicionais de
+                carne até opções vegetarianas e de frutas. Perfeito para açougues, churrascarias, supermercados e lojas
+                de conveniência, o expositor de espetos otimiza o espaço, facilita a visualização dos produtos e garante
+                a segurança alimentar, mantendo os espetos protegidos e prontos para o consumo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 15 -->
+
+      <!-- Expositor de Carvão MDF -->
+      <div class="product" data-category="MDF">
+        <img src="img/products/b4.png" alt="Gôndola Preta">
+        <h3>Expositor MDF para Carvão</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Altura: 2,20</div>
+              <div class="size-box">Comprimento: 1,10</div>
+              <div class="size-box">Largura: 0,70</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O expositor de carvão é a solução ideal para apresentar seus produtos de forma organizada e prática.
+                Com design robusto e funcional, ele permite expor diferentes tipos e tamanhos de carvão, desde os
+                tradicionais para churrasco até opções ecológicas. Perfeito para supermercados, lojas de conveniência,
+                postos de gasolina e lojas de materiais de construção, o expositor de carvão otimiza o espaço, facilita
+                a visualização dos produtos e garante a segurança dos clientes, mantendo os sacos de carvão estáveis e
+                acessíveis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 16 -->
+
+      <!-- Expositor de Defumados MDF -->
+      <div class="product" data-category="MDF">
+        <img src="img/products/b5.png" alt="Gôndola Preta">
+        <h3>Expositor MDF para Defumados</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Altura: 2,20</div>
+              <div class="size-box">Comprimento: 1,10</div>
+              <div class="size-box">Largura: 0,70</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Imagine um balcão onde o aroma irresistível dos defumados se mistura à organização impecável. Nosso
+                expositor de defumados é a materialização desse cenário. Projetado para realçar a qualidade e o sabor
+                dos seus produtos, ele oferece um espaço convidativo e higiênico para expor uma variedade de defumados,
+                desde linguiças e queijos até peixes e aves. Ideal para açougues, charcutarias, delicatessens e
+                supermercados, o expositor de defumados otimiza o espaço, facilita a visualização dos produtos e garante
+                a segurança alimentar, mantendo os defumados frescos e prontos para encantar os paladares dos seus
+                clientes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 17 -->
+
+      <!-- Expositor FLV MDF -->
+      <div class="product" data-category="MDF">
+        <img src="img/products/expositorflv.png" alt="Gôndola Preta">
+        <h3>Expositor MDF FLV</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Altura: 2,20</div>
+              <div class="size-box">Comprimento: 1,10</div>
+              <div class="size-box">Largura: 0,70</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Transforme a seção de FLV (Frutas Legumes e Verduras) do seu estabelecimento em um verdadeiro festival
+                de cores e sabores com nosso
+                expositor em MDF. Projetado para realçar a beleza e o frescor dos seus produtos, este expositor combina
+                a robustez do MDF com um design inteligente, criando um ambiente convidativo e organizado. Com
+                prateleiras espaçosas e ajustáveis, ele permite expor uma variedade de frutas, legumes e verduras,
+                mantendo-os frescos e visíveis. Ideal para supermercados, hortifrutis e mercearias, o expositor FLV em
+                MDF otimiza o espaço, facilita a reposição dos produtos e garante uma experiência de compra agradável
+                para seus clientes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 18 -->
+
+      <!-- Expositor Pães MDF -->
+      <div class="product" data-category="MDF">
+        <img src="img/products/b12.png" alt="Gôndola Preta">
+        <h3>Expositor MDF para Pães</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Altura: 2,20</div>
+              <div class="size-box">Comprimento: 1,10</div>
+              <div class="size-box">Largura: 0,70</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Apresente seus pães com o cuidado e a sofisticação que eles merecem com nosso expositor especialmente
+                projetado para padarias, supermercados e estabelecimentos que valorizam a qualidade e a apresentação de
+                seus produtos de panificação. Com um design que combina funcionalidade e estética, este expositor cria
+                um ambiente convidativo, onde a variedade de pães frescos se torna o centro das atenções. Prateleiras
+                espaçosas e bem iluminadas garantem que cada pão seja exibido de forma atraente, enquanto a estrutura
+                robusta e higiênica assegura a preservação da qualidade e do frescor. Ideal para pães artesanais, pães
+                de fermentação natural, pães especiais e muito mais, este expositor é a escolha perfeita para encantar
+                seus clientes e impulsionar suas vendas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 19 -->
+
+      <!-- Expositor de Vinhos MDF -->
+      <div class="product" data-category="MDF">
+        <img src="img/products/b7.png" alt="Gôndola Preta">
+        <h3>Expositor MDF para Vinhos</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Altura: 2,20</div>
+              <div class="size-box">Comprimento: 1,10</div>
+              <div class="size-box">Largura: 0,70</div>
+              <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Celebre a arte da degustação com nosso expositor de vinhos, a peça central que transformará sua coleção
+                em uma experiência visual e sensorial. Projetado para os apreciadores de vinho, este expositor combina
+                elegância e funcionalidade, oferecendo um espaço seguro e convidativo para expor seus rótulos favoritos.
+                Ideal para adegas, lojas de bebidas, restaurantes e até mesmo para sua casa, o expositor de vinhos
+                otimiza o espaço, facilita a visualização dos rótulos e cria um ambiente sofisticado, onde cada garrafa
+                conta uma história.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 20 -->
+
+      <!-- Expositor Premium de Vinhos MDF -->
+      <div class="product" data-category="MDF">
+        <img src="img/products/b8.png" alt="Gôndola Preta">
+        <h3>Expositor Premium MDF para Vinhos</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+              <div class="size-box">Sob Medida - Consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>CApresentamos o expoente máximo em requinte e sofisticação: nosso expositor premium de vinhos.
+                Uma obra de arte funcional, meticulosamente projetada para os connaisseurs que apreciam a excelência em
+                cada detalhe. Com design imponente e materiais nobres, este expositor transcende a mera organização de
+                rótulos, transformando sua coleção em um espetáculo visual. Iluminação LED personalizada, identificação
+                por módulo, grades de proteção controle de temperatura preciso e um espaço dedicado para taças e
+                acessórios elevam a experiência de degustação a um novo patamar. Ideal para adegas de alto padrão,
+                restaurantes renomados e residências que celebram a arte do vinho, este expositor premium é a expressão
+                máxima do luxo e da paixão pela enologia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 21 -->
+
+      <!-- Ponta MDF 01 -->
+      <div class="product" data-category="MDF gondolas">
+        <img src="img/products/pontaMDF1.png" alt="Gôndola Preta">
+        <h3>Ponta de Gôndola MDF</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+                <div class="size-box">Altura: 2,20</div>
+                <div class="size-box">Comprimento: 1,10</div>
+                <div class="size-box">Largura: 0,70</div>
+                <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Conquiste a atenção dos seus clientes logo na entrada do corredor com nossa ponta de gôndola em MDF, a
+                solução perfeita para destacar produtos estratégicos e impulsionar suas vendas. Com um design moderno e
+                versátil, esta ponta de gôndola combina a robustez do MDF com prateleiras ajustáveis e iluminação LED
+                opcional, criando um espaço convidativo e organizado. Ideal para supermercados, farmácias, lojas de
+                conveniência e outros estabelecimentos, a ponta de gôndola em MDF otimiza o espaço, facilita a reposição
+                dos produtos e garante uma experiência de compra agradável para seus clientes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 22 -->
+
+      <!-- Ponta MDF 3 Faces -->
+      <div class="product" data-category="MDF gondolas">
+        <img src="img/products/pontaMDF2.png" alt="Gôndola Preta">
+        <h3>Ponta de Gôndola MDF 3 Faces</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+                <div class="size-box">Altura: 2,20</div>
+                <div class="size-box">Comprimento: 1,10</div>
+                <div class="size-box">Largura: 0,70</div>
+                <div class="size-box">Outras dimensões consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Conquiste a atenção dos seus clientes logo na entrada do corredor com nossa ponta de gôndola em MDF, a
+                solução perfeita para destacar produtos estratégicos e impulsionar suas vendas. Com um design moderno e
+                versátil, esta ponta de gôndola combina a robustez do MDF com prateleiras ajustáveis e iluminação LED
+                opcional, criando um espaço convidativo e organizado. Ideal para supermercados, farmácias, lojas de
+                conveniência e outros estabelecimentos, a ponta de gôndola em MDF otimiza o espaço, facilita a reposição
+                dos produtos e garante uma experiência de compra agradável para seus clientes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 23 -->
+
+      <!-- Balcão Central 01 -->
+      <div class="product" data-category="MDF balcões">
+        <img src="img/products/b9.png" alt="Gôndola Preta">
+        <h3>Expositor Central MDF 3 níveis</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+                <div class="size-box">Sob medida - Consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O expositor de três níveis em MDF com acabamento amadeirado é a solução perfeita para quem busca
+                combinar funcionalidade e estilo na organização de produtos. Com um design clean e moderno, este
+                expositor oferece três prateleiras espaçosas, ideais para exibir uma variedade de itens, desde produtos
+                de mercearia até objetos de decoração. O acabamento em tons de madeira confere um toque de elegância e
+                sofisticação, tornando-o perfeito para qualquer ambiente, desde lojas de conveniência até boutiques de
+                luxo. A estrutura robusta em MDF garante durabilidade e resistência, enquanto a montagem simples e
+                rápida permite que você personalize o layout de acordo com suas necessidades.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 24 -->
+
+      <!-- Balcão Central 02 -->
+      <div class="product" data-category="MDF balcões">
+        <img src="img/products/b10.png" alt="Gôndola Preta">
+        <h3>Expositor Central MDF 4 níveis</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+                <div class="size-box">Sob medida - Consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>Expositor de três níveis em MDF, com design robusto e acabamento amadeirado. Este expositor
+                oferece uma solução prática e elegante para organizar e exibir seus produtos. As três prateleiras
+                espaçosas proporcionam ampla área de exposição, ideal para uma variedade de itens, desde produtos de
+                mercearia até objetos de decoração. A estrutura em MDF garante durabilidade e resistência, enquanto o
+                acabamento em tons de madeira confere um toque de sofisticação, adaptando-se a diversos estilos de
+                ambiente. Perfeito para lojas de conveniência, supermercados, boutiques e muito mais, o expositor é a
+                escolha ideal para quem busca otimizar o espaço e valorizar a apresentação dos produtos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 25 -->
+
+      <!-- Balcão Central 03 -->
+      <div class="product" data-category="MDF balcões">
+        <img src="img/products/b6.png" alt="Gôndola Preta">
+        <h3>Expositor Central MDF 4 níveis</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+                <div class="size-box">Sob medida - Consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O expositor em pirâmide é a solução perfeita para quem busca uma apresentação diferenciada e
+                elegante para seus produtos. Com um design em camadas que se assemelha a uma pirâmide, este expositor
+                oferece quatro níveis de exposição, permitindo que você organize seus itens de forma criativa e atraente.
+                O acabamento em tons de madeira confere um toque de sofisticação, tornando-o ideal para lojas de
+                conveniência, boutiques, padarias e outros estabelecimentos que valorizam a apresentação visual.
+                A estrutura robusta em MDF garante durabilidade e resistência, enquanto a montagem simples e rápida
+                permite que você personalize o layout de acordo com suas necessidades.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 26 -->
+
+      <!-- Balcão Central 04 -->
+      <div class="product" data-category="MDF balcões">
+        <img src="img/products/b11.png" alt="Gôndola Preta">
+        <h3>Expositor MDF arredondado</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+                <div class="size-box">Sob medida - Consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O expositor MDF arredondado é a solução ideal para quem busca uma apresentação elegante e compacta para seus
+                produtos. Com um design vertical de quatro níveis, este expositor oferece quatro prateleiras redondas,
+                perfeitas para exibir pequenos itens de forma organizada e atraente. O acabamento em tons de madeira
+                confere um toque de sofisticação, tornando-o ideal para lojas de conveniência, boutiques, padarias e
+                outros estabelecimentos que valorizam a apresentação visual. A estrutura robusta em MDF garante
+                durabilidade e resistência, enquanto a montagem simples e rápida permite que você personalize o layout
+                de acordo com suas necessidades.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 27 -->
+
+      <!-- Balcão Central 05 -->
+      <div class="product" data-category="MDF balcões">
+        <img src="img/products/expocentralflv.png" alt="Gôndola Preta">
+        <h3>???</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+                <div class="size-box">Sob medida - Consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O expositor central para FLV é a solução ideal para quem busca uma apresentação prática
+                e atraente para frutas, legumes e verduras. Com um design modular e personalizável, este expositor oferece
+                quatro compartimentos espaçosos, permitindo que você organize seus produtos de forma criativa e convidativa.
+                O acabamento em tons de madeira confere um toque de sofisticação, tornando-o ideal para supermercados,
+                hortifrutis e outros estabelecimentos que valorizam a apresentação visual. A estrutura robusta em MDF
+                garante durabilidade e resistência, enquanto a montagem simples e rápida permite que você personalize o
+                layout de acordo com suas necessidades.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 28 -->
+
+      <!-- Balcão Central 06 -->
+      <div class="product" data-category="MDF balcões">
+        <img src="img/products/expositor central.png" alt="Gôndola Preta">
+        <h3>???</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+                <div class="size-box">Sob medida - Consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O expositor central para FLV é a solução ideal para quem busca uma apresentação prática
+                e atraente para frutas, legumes e verduras. Com um design modular e personalizável, este expositor oferece
+                quatro compartimentos espaçosos, permitindo que você organize seus produtos de forma criativa e convidativa.
+                O acabamento em tons de madeira confere um toque de sofisticação, tornando-o ideal para supermercados,
+                hortifrutis e outros estabelecimentos que valorizam a apresentação visual. A estrutura robusta em MDF
+                garante durabilidade e resistência, enquanto a montagem simples e rápida permite que você personalize o
+                layout de acordo com suas necessidades.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 29 -->
+
+      <!-- Balcão Central 05 -->
+      <div class="product" data-category="balcões">
+        <img src="img/products/b1.png" alt="Gôndola Preta">
+        <h3>Expositor com Gancheiras</h3>
+        <div class="overlay">
+          <div class="options-content">
+            <div class="color-options">
+              <h4>Cores</h4>
+              <div class="color-circle" style="background-color: #CD853F; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #800000; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #DEB887; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #8B4513; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #D2691E; border: 1px solid #ccc;"></div>
+              <div class="color-circle" style="background-color: #A0522D; border: 1px solid #ccc;"></div>
+            </div>
+            <div class="size-options">
+              <h4>Dimensões</h4>
+                <div class="size-box">Sob medida - Consultar o comercial</div>
+            </div>
+            <div class="description-box">
+              <h4>Descrição</h4>
+              <p>O expositor com gancheiras é a solução ideal para quem busca versatilidade e organização na apresentação de seus
+                produtos. Com um design modular e personalizável, este expositor oferece uma estrutura em grade que
+                permite adaptar prateleiras e ganchos de acordo com suas necessidades. A estrutura em metal garante
+                durabilidade e resistência, enquanto o design aberto facilita a visualização dos produtos. Ideal para
+                lojas de conveniência, supermercados, lojas de ferramentas e outros estabelecimentos que valorizam a
+                organização e a praticidade, o expositor com gancheiras é a escolha perfeita para quem busca otimizar o espaço e
+                valorizar a apresentação dos produtos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End product 30 -->
+
+
+    </div>
+  </body>
+
+  <!-- Contact Section Start -->
+  <section id="contact" class="section-padding bg-gray">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Contato</h2>
+          <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+        </div>
+        <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.3s">
+          <div class="col-lg-7 col-md-12 col-sm-12">
+            <div class="contact-block">
+              <form id="contactForm" action="https://formspree.io/f/manqedog" method="POST">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Nome" required data-error="Insira seu nome">
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="email" placeholder="Email" id="email" class="form-control" name="email" required data-error="Insira um email válido">
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="text" placeholder="Assunto" id="msg_subject" class="form-control" name="subject" required data-error="Insira o assunto">
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea class="form-control" id="message" name="message" placeholder="Mensagem" rows="7" data-error="Insira sua dúvida" required></textarea>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="submit-button text-left">
+                      <button class="btn btn-common" id="form-submit" type="submit">Enviar Mensagem</button>
+                      <div id="msgSubmit" class="h3 text-center hidden"></div>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-12 col-xs-12">
+            <div class="map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3574.2940353155786!2d-52.862970974578786!3d-26.38168657696768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94fab996a28b18d3%3A0x8338f29993165d27!2sBLAN%20LUMIN%C3%81RIAS!5e0!3m2!1spt-BR!2sbr!4v1737144790830!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!-- Contact Section Ends -->
+
+  <!-- Footer Section Start -->
+  <footer id="footer" class="footer-area section-padding">
+      <div class="container">
+        <div class="row d-flex align-items-center justify-content-between text-center">
+          <!-- Esquerda - Texto e Redes Sociais -->
+          <div class="col-lg-4 d-flex flex-column align-items-center">
+            <p>As soluções comerciais completas para o seu estabelecimento</p>
+            <div class="social-icon">
+              <a class="facebook" href="https://www.facebook.com/profile.php?id=100008389150351"><i class="lni-facebook-filled"></i></a>
+              <a class="instagram" href="#"><i class="lni-instagram-filled"></i></a>
+              <a class="linkedin" href="#"><i class="lni-linkedin-filled"></i></a>
+            </div>
+          </div>
+
+          <!-- Centro - Logo -->
+          <div class="col-lg-4 d-flex justify-content-center">
+            <img src="img/logo2.png" alt="Logo da Empresa" style="max-width: 150px;">
+          </div>
+
+          <!-- Direita - Contato -->
+          <div class="col-lg-4 text-right">
+            <h3 class="footer-titel">Contato</h3>
+            <ul class="address list-unstyled">
+              <li><i class="lni-map-marker"></i> Rua Vereador Argeu Barbosa de Camargo, 100 Parque Industrial, São Lourenço do Oeste - SC, CEP 89990-000</li>
+              <li><i class="lni-phone-handset"></i> +55 (49) 99961-1711</li>
+              <li><i class="lni-envelope"></i> comercial@blan.ind.br</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="copyright" class="text-center mt-4">
+        <p>Copyright © 2025 All Rights Reserved by BLAN</p>
+      </div>
+    </footer>
+  <!-- Footer Section Ends -->
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/554999611711" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+  <!-- WhatsApp Button Ends -->
+
+  <!-- Go to Top Link -->
+  <a href="#" class="back-to-top">
+    <i class="lni lni-arrow-up"></i>
+  </a>
+  <!-- Go to Top Link Ends -->
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader" id="loader-1"></div>
+  </div>
+  <!-- Preloader Ends -->
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery-min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/wow.js"></script>
+  <script src="js/jquery.nav.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/scrolling-nav.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/form-validator.min.js"></script>
+  <script src="js/contact-form-script.min.js"></script>
+
