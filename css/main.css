@@ -24,8 +24,15 @@ body {
   height: auto; /* mantém a proporção da imagem */
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
   font-size: 38px;
+  color: #222222;
+  font-weight: 700;
+  font-family: 'Arvo', serif;
+}
+
+h4 {
+  font-size: 26px;
   color: #222222;
   font-weight: 700;
   font-family: 'Arvo', serif;
